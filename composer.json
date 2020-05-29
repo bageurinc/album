@@ -1,0 +1,28 @@
+{
+    "name": "bageur/album",
+    "description": "album builder for cms bageur",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bageur solusi indonesia",
+            "email": "bageur.inc@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1.3",
+        "tymon/jwt-auth": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bageur\\Album\\": "src/" 
+        } 
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bageur\\Album\\AlbumServiceProvider"
+            ]
+        }
+    }
+}
