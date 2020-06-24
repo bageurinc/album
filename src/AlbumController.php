@@ -73,9 +73,11 @@ class AlbumController extends Controller
             $errors = $validator->errors();
             return response(['status' => false ,'error'    =>  $errors->all()], 200);
         }else{
-            $album                       = album::findOrFail($id);
-            $album->nama                 = $request->nama;
-            $album->nama_seo             = Str::slug($request->nama);
+            $album                          = album::findOrFail($id);
+            $album->nama                    = $request->nama;
+            $album->nama_seo                = Str::slug($request->nama);
+            $album->group                   = $request->group;
+            $album->group_seo               = Str::slug($request->group);
             $album->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }

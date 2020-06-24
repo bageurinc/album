@@ -39,7 +39,9 @@ class albumdetail extends Model
         }else{
              $query->whereRaw($searchqry);
         }
-
+        if($request->id_album){
+          $query->where('album_id',$request->id_album);
+        }
         if($request->get == 'all'){
             return $query->get();
         }else{
