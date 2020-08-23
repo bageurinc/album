@@ -11,7 +11,7 @@ class albumdetail extends Model
 
     public function getImgAttribute()
     {
-       return url('album/'.$this->gambar);
+       return url('storage/album/'.$this->gambar);
     }     
     public function scopeDatatable($query,$request,$page=12)
     {
