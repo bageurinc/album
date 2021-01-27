@@ -29,7 +29,7 @@ class album extends Model
     }   
     public function scopeDatatable($query,$request,$page=12)
     {
-        $search       = ["nama"];
+        $search       = ["nama",'`group`'];
         $searchqry    = '';
 
         $searchqry = "(";
