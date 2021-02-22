@@ -16,7 +16,7 @@ class AlbumServiceProvider extends ServiceProvider
         // include __DIR__.'/routes/web.php';
         $this->app->make('Bageur\Album\AlbumController');
         $this->app->make('Bageur\Album\AlbumdetailController');
-        // $this->app->make('Bageur\Album\KategoriController');
+        $this->app->make('Bageur\Album\KomentarController');
     }
 
     /**

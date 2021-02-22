@@ -4,5 +4,6 @@ Route::name('bageur.')->group(function () {
 		// Route::apiResource('artikel', 'bageur\artikel\ArtikelController');
 		Route::apiResource('album', 'bageur\album\AlbumController');
 		Route::apiResource('album-detail', 'bageur\album\AlbumdetailController')->except(['update']);
+		Route::apiResource('komentar', 'bageur\album\KomentarController');
 	});
 });
