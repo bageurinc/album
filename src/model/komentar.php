@@ -5,7 +5,7 @@ namespace Bageur\Album\Model;
 use Illuminate\Database\Eloquent\Model;
 use Bageur\Artikel\Processors\AvatarProcessor;
 
-class komentar_album extends Model
+class komentar extends Model
 {
     protected $table = 'bgr_komen_album';
 
