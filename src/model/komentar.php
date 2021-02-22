@@ -7,7 +7,7 @@ use Bageur\Artikel\Processors\AvatarProcessor;
 
 class komentar extends Model
 {
-    protected $table = 'bgr_komen_artikel';
+    protected $table = 'bgr_komen_album';
 
     public function submenu()
     {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Komentar extends Migration
+class KomentarAlbum extends Migration
 {
     /**
      * Run the migrations.
@@ -34,6 +34,6 @@ class Komentar extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bgr_komen_artikel');
+        Schema::dropIfExists('bgr_komen_album');
     }
 }
