@@ -3,39 +3,28 @@
 namespace Bageur\Album\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use Bageur\Album\Processors\AvatarProcessor;
-use Bageur\Album\model\albumdetail;
-use Bageur\Artikel\Model\komentar;
+use Bageur\Artikel\Processors\AvatarProcessor;
 
-class album extends Model
+class komentar extends Model
 {
-    protected $table = 'bgr_album';
-    protected $appends = ['avatar','avatar_group'];
+    protected $table = 'bgr_komen_artikel';
 
-    public function getAvatarAttribute()
+    public function submenu()
     {
-         $last = albumdetail::orderBy('created_at','desc')
-                                ->where('album_id', $this->id)
-                                ->first();
-
-            return AvatarProcessor::get($this->nama,@$last->gambar);
-    }       
-    public function getAvatarGroupAttribute()
+    	 return $this->hasMany(komentar::class,'komen_id');
+    }
+    public function parent()
     {
-            $last = albumdetail::orderBy('created_at','desc')
-                                ->where('album_id', $this->id)
-                                ->first();
-
-            return AvatarProcessor::get($this->group,@$last->gambar);
-    }  
-    public function komentar()
+       return $this->hasOne(komentar::class,'id','komen_id');
+    }
+    public function album()
     {
-        return $this->hasMany(komentar::class, 'album_id', 'id');
-    } 
+       return $this->hasOne(album::class,'id','album_id');
+    }
     public function scopeDatatable($query,$request,$page=12)
     {
-        $search       = ["nama",'`group`'];
-        $searchqry    = '';
+          $search       = ["nama","nama_album"];
+          $searchqry    = '';
 
         $searchqry = "(";
         foreach ($search as $key => $value) {
@@ -45,7 +34,6 @@ class album extends Model
                 $searchqry .= "OR lower($value) like '%".strtolower($request->search)."%'";
             }
         } 
-
         $searchqry .= ")";
         if(@$request->sort_by){
             if(@$request->sort_by != null){
@@ -59,7 +47,6 @@ class album extends Model
         }else{
              $query->whereRaw($searchqry);
         }
-
         if($request->get == 'all'){
             return $query->get();
         }else{
