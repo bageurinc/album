@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Bageur\Album\model\album;
-use Bageur\Album\Processors\UploadProcessor;
+use Bageur\Album\processors\UploadProcessor;
 use Validator;
 class AlbumController extends Controller
 {
