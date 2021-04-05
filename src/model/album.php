@@ -3,7 +3,7 @@
 namespace Bageur\Album\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use Bageur\Album\Processors\AvatarProcessor;
+use Bageur\Album\processors\AvatarProcessor;
 use Bageur\Album\model\albumdetail;
 use Bageur\Artikel\Model\komentar;
 
