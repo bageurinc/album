@@ -47,6 +47,9 @@ class komentar extends Model
         }else{
              $query->whereRaw($searchqry);
         }
+        if($request->album_id){
+          $query->where('album_id',$request->album_id);
+        }
         if($request->get == 'all'){
             return $query->get();
         }else{
