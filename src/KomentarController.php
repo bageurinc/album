@@ -2,7 +2,7 @@
 namespace Bageur\Album;
 
 use App\Http\Controllers\Controller;
-use Bageur\Album\Model\komentar;
+use Bageur\Album\model\komentar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Validator;
