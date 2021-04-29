@@ -19,7 +19,7 @@ class AlbumController extends Controller
     {
         $rules    	= [
                         'nama'		     		=> 'required|unique:bgr_album|min:3',
-                        'group'                 => 'nullable|unique:bgr_album|min:3'
+                        // 'group'                 => 'nullable|unique:bgr_album|min:3'
                     ];
 
         $messages 	= [];
