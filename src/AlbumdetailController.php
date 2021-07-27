@@ -32,7 +32,7 @@ class AlbumdetailController extends Controller
         }else{
 
            $gambar = $request->file('gambar');
-           for ($i=0; $i < count($gambar); $i++) { 
+           for ($i=0; $i < count($gambar); $i++) {
                 $upload                     = UploadProcessor::go($gambar[$i],'album');
 
                 $albumdetail                    = new albumdetail;
@@ -40,7 +40,7 @@ class AlbumdetailController extends Controller
                 $albumdetail->gambar            = $upload;
                 $albumdetail->save();
            }
-            return response(['status' => true ,'text'    => 'has input'], 200); 
+            return response(['status' => true ,'text'    => 'has input'], 200);
         }
     }
 
@@ -66,7 +66,17 @@ class AlbumdetailController extends Controller
     {
           $delete = albumdetail::findOrFail($id);
           $delete->delete();
-          return response(['status' => true ,'text'    => 'has deleted'], 200); 
+          return response(['status' => true ,'text'    => 'has deleted'], 200);
     }
 
+    public function urutan(Request $request)
+    {
+        $up         = albumdetail::find($request->id);
+        $up->urutan = $request->urutan_baru;
+        $up->update();
+
+        $up2        = albumdetail::find($request->id_old);
+        $up2->urutan = $request->urutan_sekarang;
+        $up2->update();
+    }
 }
