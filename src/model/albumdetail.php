@@ -11,8 +11,8 @@ class albumdetail extends Model
 
     public function getImgAttribute()
     {
-       return url('storage/album/'.$this->gambar);
-    }     
+       return \Storage::url('album/'.$this->gambar);
+    }
     public function scopeDatatable($query,$request,$page=12)
     {
           $search       = ["id"];
@@ -25,7 +25,7 @@ class albumdetail extends Model
             }else{
                 $searchqry .= "OR lower($value) like '%".strtolower($request->search)."%'";
             }
-        } 
+        }
         $searchqry .= ")";
         if(@$request->sort_by){
             if(@$request->sort_by != null){
@@ -49,5 +49,5 @@ class albumdetail extends Model
         }
 
     }
-  
+
 }
