@@ -35,6 +35,7 @@ class AlbumController extends Controller
             $album->nama_seo	       		= Str::slug($request->nama);
             $album->group                   = $request->group;
             $album->group_seo               = Str::slug($request->group);
+            $album->urutan                   = $request->urutan;
             $album->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
@@ -77,6 +78,7 @@ class AlbumController extends Controller
             $album->nama_seo                = Str::slug($request->nama);
             $album->group                   = $request->group;
             $album->group_seo               = Str::slug($request->group);
+            $album->urutan                   = $request->urutan;
             $album->save();
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
