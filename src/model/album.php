@@ -35,7 +35,8 @@ class album extends Model
                                 ->where('album_id', $this->id)
                                 ->first();
 
-            return AvatarProcessor::get($this->nama,@$last->gambar);
+            // return AvatarProcessor::get($this->nama,@$last->gambar);
+            return \Bageur::avatar($this->nama, @$last->gambar ,'album');
     }
     public function getAvatarGroupAttribute()
     {

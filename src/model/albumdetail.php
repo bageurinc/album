@@ -11,7 +11,8 @@ class albumdetail extends Model
 
     public function getImgAttribute()
     {
-       return \Storage::url('album/'.$this->gambar);
+    //    return \Storage::url('album/'.$this->gambar);
+       return \Bageur::avatar('', $this->gambar ,'album');
     }
     public function scopeDatatable($query,$request,$page=12)
     {
