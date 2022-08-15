@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Bageur\Album\model\albumdetail;
 use Bageur\Album\processors\UploadProcessor;
+use Illuminate\Support\Facades\Http;
 use Validator;
 class AlbumdetailController extends Controller
 {
@@ -40,6 +41,12 @@ class AlbumdetailController extends Controller
                 $albumdetail->gambar            = $upload;
                 $albumdetail->save();
            }
+           try {
+               $response = Http::post('https://api.miccapro.com/api/company/repairGallery');
+           } catch (\Throwable $th) {
+               // dd($th);
+               //throw $th;
+           }
             return response(['status' => true ,'text'    => 'has input'], 200);
         }
     }
@@ -66,6 +73,12 @@ class AlbumdetailController extends Controller
     {
           $delete = albumdetail::findOrFail($id);
           $delete->delete();
+          try {
+              $response = Http::post('https://api.miccapro.com/api/company/repairGallery');
+          } catch (\Throwable $th) {
+              // dd($th);
+              //throw $th;
+          }
           return response(['status' => true ,'text'    => 'has deleted'], 200);
     }
 

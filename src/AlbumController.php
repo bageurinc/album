@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Bageur\Album\model\album;
+use Illuminate\Support\Facades\Http;
 use Validator;
 class AlbumController extends Controller
 {
@@ -37,6 +38,14 @@ class AlbumController extends Controller
             $album->group_seo               = Str::slug($request->group);
             $album->urutan                   = $request->urutan;
             $album->save();
+            try {
+                $response = Http::post('https://api.miccapro.com/api/company/getGallerynyaGroup', [
+                    'training_jenis' => $album->group 
+                ]);
+            } catch (\Throwable $th) {
+                // dd($th);
+                //throw $th;
+            }
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
     }
@@ -80,6 +89,14 @@ class AlbumController extends Controller
             $album->group_seo               = Str::slug($request->group);
             $album->urutan                   = $request->urutan;
             $album->save();
+            try {
+                $response = Http::post('https://api.miccapro.com/api/company/getGallerynyaGroup', [
+                    'training_jenis' => $album->group 
+                ]);
+            } catch (\Throwable $th) {
+                // dd($th);
+                //throw $th;
+            }
             return response(['status' => true ,'text'    => 'has input'], 200); 
         }
     }
@@ -94,6 +111,12 @@ class AlbumController extends Controller
     {
           $delete = album::findOrFail($id);
           $delete->delete();
+          try {
+              $response = Http::post('https://api.miccapro.com/api/company/getGallerynya');
+          } catch (\Throwable $th) {
+              // dd($th);
+              //throw $th;
+          }
           return response(['status' => true ,'text'    => 'has deleted'], 200); 
     }
 
