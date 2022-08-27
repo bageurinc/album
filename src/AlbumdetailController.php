@@ -74,7 +74,7 @@ class AlbumdetailController extends Controller
           $delete = albumdetail::findOrFail($id);
           $delete->delete();
           try {
-              $response = Http::post('https://api.miccapro.com/api/company/repairGallery');
+              $response = Http::post('https://api.miccapro.com/api/training/repairGallery');
           } catch (\Throwable $th) {
               // dd($th);
               //throw $th;
@@ -91,5 +91,11 @@ class AlbumdetailController extends Controller
         $up2        = albumdetail::find($request->id_old);
         $up2->urutan = $request->urutan_sekarang;
         $up2->update();
+        try {
+            $response = Http::post('https://api.miccapro.com/api/training/repairGallery');
+        } catch (\Throwable $th) {
+            // dd($th);
+            //throw $th;
+        }
     }
 }
