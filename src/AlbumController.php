@@ -37,6 +37,7 @@ class AlbumController extends Controller
             $album->group                   = $request->group;
             $album->group_seo               = Str::slug($request->group);
             $album->urutan                   = $request->urutan;
+            $album->cover                   = $request->cover;
             $album->save();
             try {
                 $response = Http::post('https://api.miccapro.com/api/training/getGallerynyaGroup', [
@@ -88,6 +89,7 @@ class AlbumController extends Controller
             $album->group                   = $request->group;
             $album->group_seo               = Str::slug($request->group);
             $album->urutan                   = $request->urutan;
+            $album->cover                   = $request->cover;
             $album->save();
             try {
                 $response = Http::post('https://api.miccapro.com/api/training/getGallerynyaGroup', [
@@ -112,7 +114,7 @@ class AlbumController extends Controller
           $delete = album::findOrFail($id);
           $delete->delete();
           try {
-              $response = Http::post('https://api.miccapro.com/api/training/getGallerynya');
+              $response = Http::post('https://api.miccapro.com/api/training/getGallerynyaGroup');
           } catch (\Throwable $th) {
               // dd($th);
               //throw $th;

@@ -15,6 +15,7 @@ class AddFieldUrutanToBgrAlbum extends Migration
     {
         Schema::table('bgr_album', function (Blueprint $table) {
             $table->integer('urutan')->default(0);
+            $table->string('cover')->nullable();
         });
     }
 
