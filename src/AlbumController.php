@@ -112,9 +112,12 @@ class AlbumController extends Controller
     public function destroy($id)
     {
           $delete = album::findOrFail($id);
+          $nama = $delete->group;
           $delete->delete();
           try {
-              $response = Http::post('https://api.miccapro.com/api/training/getGallerynyaGroup');
+              $response = Http::post('https://api.miccapro.com/api/training/getGallerynyaGroup', [
+                'training_jenis' => $nama
+            ]);
           } catch (\Throwable $th) {
               // dd($th);
               //throw $th;
